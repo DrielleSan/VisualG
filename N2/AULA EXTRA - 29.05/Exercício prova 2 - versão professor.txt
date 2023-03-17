@@ -1,0 +1,67 @@
+Algoritmo "semnome"
+// Disciplina  : [No��es de Programa��o/ITI]
+// Professor   : S�rgio Netto
+// Descri��o   : Aqui voc� descreve o que o programa faz! (fun��o)
+// Autor(a)    : Nome do(a) aluno(a)
+// Data atual  : 01/06/2021
+Var
+   // Se��o de Declara��es das vari�veis
+   i,un,tu,sx:inteiro
+   codigo,nivel,qtdh:vetor[0..49] de inteiro
+   unidade,turno,sexo:vetor[0..49] de caracter
+   sal:vetor[0..49] de real
+   salbase,pOpPtu,tOpPtu,pOpCab,tOpCab:real
+   p180Not,t180Not,tNot,p180Diu,t180Diu,tDiu:real
+   medGHT,tGHT:real
+
+Inicio
+   // Se��o de Comandos, procedimento, fun��es, operadores, etc...
+   salbase<-1200
+   escreval("Cod   Unidade   Turno    NIV  NHR  Sexo        Salario")
+   escreval("======================================================")
+   para i de 0 ate 49 faca
+      codigo[i]<-101+i
+      un<-randi(2)+1
+      tu<-randi(2)
+      sx<-randi(2)
+      nivel[i]<-randi(5)+1
+      qtdh[i]<-randi(41)+160
+      tGHT<-tGHT+qtdh[i]
+      se un=1 entao
+         unidade[i]<-"Pq.Tubos"
+         tOpPtu<- tOpPtu+1
+      senao
+         unidade[i]<-"Cabi�nas"
+         tOpCab<-tOpCab+1
+      fimse
+      se tu=0 entao
+         turno[i]<-"Noturno"
+         tNot<-tNot+1
+         se qtdh[i]>180 entao
+            t180Not<-t180Not+1
+         fimse
+      senao
+         turno[i]<-"Diurno "
+         tDiu<-tDiu+1
+         se qtdh[i]>180 entao
+            t180Diu<-t180Diu+1
+         fimse
+      fimse
+      se sx=0 entao
+         sexo[i]<-"Feminino "
+      senao
+         sexo[i]<-"MAsculino"
+      fimse
+      sal[i]<-salbase+(200*nivel[i])+((salbase/100)*qtdh[i])
+      escreva (codigo[i],"  ",unidade[i],"  ",turno[i])
+      escreval(nivel[i]:4,qtdh[i]:6,"  ",sexo[i],sal[i]:10:2)
+   fimpara
+    escreval("======================================================")
+   pOpPtu<-tOpPtu/50*100
+   pOpCab<-tOpCab/50*100
+   escreval
+   p180Not<-t180Not/tNot*100
+   p180Diu<-t180Diu/tDiu*100
+   medGHT<-tGHT/50
+
+Fimalgoritmo
